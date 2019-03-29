@@ -1,0 +1,222 @@
+﻿@model IEnumerable<BusinessLayer.PriceModel>
+<br /><br />
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <table class="table table-striped" border="1">
+        <tbody>
+            <tr>
+                <td>
+                    Hotel
+                </td>
+                <td>
+                    @Html.TextBox("searchKodHotel")
+                </td>
+                <td>
+                    Kod pokoju
+                </td>
+                <td>
+                    @Html.TextBox("searchKodPokoju")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Rola Osoby
+                </td>
+                <td>
+                    @Html.DropDownList("searchRolaOsoby", new List<SelectListItem>
+      {
+              new SelectListItem {Text = "ADT 01", Value = "ADT 01"},
+              new SelectListItem {Text = "ADT 03", Value = "ADT 03"},
+              new SelectListItem {Text = "ADT 04", Value = "ADT 04"},
+              new SelectListItem {Text = "CHD 01", Value = "CHD 01"},
+              new SelectListItem {Text = "CHD 02", Value = "CHD 02"},
+              new SelectListItem {Text = "CHD 03", Value = "CHD 03"},
+              new SelectListItem {Text = "CHD 04", Value = "CHD 04"},
+              new SelectListItem {Text = "INF", Value = "INF"}
+      },"")
+                </td>
+                <td>
+                    Długość pobytu
+                </td>
+                <td>
+                    @Html.DropDownList("searchOkres", new List<SelectListItem>
+       {
+               new SelectListItem {Text = "3 dni", Value = "03 dni"},
+               new SelectListItem {Text = "4 dni", Value = "04 dni"},
+               new SelectListItem {Text = "7 dni", Value = "07 dni"},
+               new SelectListItem {Text = "10 dni", Value = "10 dni"},
+               new SelectListItem {Text = "11 dni", Value = "11 dni"},
+               new SelectListItem {Text = "14 dni", Value = "14 dni"}
+       },"")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Data cennika
+                </td>
+                <td>
+                    @Html.TextBox("searchDataCennika", null, new { type = "date" })
+                </td>
+                <td>
+                    Data rozpoczęcia pobytu
+                </td>
+                <td>
+                    @Html.TextBox("searchDataPobytu", null, new { type = "date" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Wylot
+                </td>
+                <td>
+                    @Html.DropDownList("searchAirportPL", new List<SelectListItem>
+                           {
+                                   new SelectListItem {Text = "Poznań", Value = "poz"},
+                                   new SelectListItem {Text = "Warszawa", Value = "waw"},
+                                   new SelectListItem {Text = "Katowice", Value = "ktw"},
+                                   new SelectListItem {Text = "Wrocław", Value = "wro"},
+                                   new SelectListItem {Text = "Gdańsk", Value = "gdn"},
+                                   new SelectListItem {Text = "Kraków", Value = "krk"},
+                                   new SelectListItem {Text = "Bydgoszcz", Value = "bzg"},
+                                   new SelectListItem {Text = "Rzeszów", Value = "rze"},
+                                   new SelectListItem {Text = "Łódź", Value = "lcj"}
+                           },"")
+                </td>
+                <td>
+                    Przylot
+                </td>
+                <td>
+                    @Html.DropDownList("searchAirportGR", new List<SelectListItem>
+        {
+                new SelectListItem {Text = "Santorini", Value = "jtr" },
+                new SelectListItem {Text = "Skiathos", Value = "jsi" },
+                new SelectListItem {Text = "Peloponez Północny", Value = "gpa" },
+                new SelectListItem {Text = "Peloponez Południowy", Value = "klx" },
+                new SelectListItem {Text = "Ateny", Value = "ath" },
+                new SelectListItem {Text = "Saloniki", Value = "skg" },
+                new SelectListItem {Text = "Lefkada", Value = "pvk" },
+                new SelectListItem {Text = "Kefalonia", Value = "efl" },
+                new SelectListItem {Text = "Korfu", Value = "cfu" },
+                new SelectListItem {Text = "Zakynthos", Value = "zth"},
+                new SelectListItem {Text = "Kos", Value = "kgs"},
+                new SelectListItem {Text = "Kreta zachodnia", Value = "chq"},
+                new SelectListItem {Text = "Kreta wschodnia", Value = "her"},
+                new SelectListItem {Text = "Rodos", Value = "rho"},
+                new SelectListItem {Text = "Cypr", Value = "lca"}
+        }, "")
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    Wyżywienie
+                </td>
+                <td>
+                    @Html.TextBox("searchWyzywienie")
+                </td>
+                <td>
+                   
+                </td>
+                <td>
+                    <input type="submit" value="Szukaj" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+
+
+}
+
+<br />
+
+<div style="font-family:Arial">
+    <table class="table table-striped" border="1">
+        <thead>
+            <tr>
+                <th>
+                    Data cennika
+                </th>
+                <th>
+                    Kod Hotelu
+                </th>
+                <th>
+                    Kod pokoju
+                </th>
+                <th>
+                    Data rozpoczęcia pobytu
+                </th>
+                <th>
+                    Wylot
+                </th>
+                <th>
+                    Przylot
+                </th>
+                <th>
+                    Osoba
+                </th>
+                <th>
+                    Długość pobytu
+                </th>
+                <th>
+                    Wyżywienie
+                </th>
+                <th>
+                    Cena
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.FromBookingDate).ToString().Substring(0, 10)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ObjectCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.RoomCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.FromDate).ToString().Substring(0,10)
+                    </td>
+                    <td>
+                        @if (item.Departure != null)
+                        {
+                            @Html.DisplayFor(model => item.Departure).ToString().Substring(0, 3)
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(model => item.Departure).ToString().Substring(0)
+                        }
+                    </td>
+                    <td>
+                        @if (item.Departure != null)
+                        {
+                            @Html.DisplayFor(model => item.Departure).ToString().Substring(3, 3)
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(model => item.Departure).ToString().Substring(0)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.RolaOsoby)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.okres_7_14)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Service)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Cena)
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
