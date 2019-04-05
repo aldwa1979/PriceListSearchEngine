@@ -34,7 +34,25 @@ namespace BusinessLayer
                         + "WHEN ([nr_progu] = 12) THEN [Cena12] "
                         + "WHEN ([nr_progu] = 13) THEN [Cena13] "
                         + "WHEN ([nr_progu] = 14) THEN [Cena14] "
-                        + "END AS [Cena]"
+                        + "END AS [Cena], "
+
+                    + "CASE "
+                        + "WHEN ([nr_progu] = 1) THEN [typ_cennika]+[Kat1] "
+                        + "WHEN ([nr_progu] = 2) THEN [typ_cennika]+[Kat2] "
+                        + "WHEN ([nr_progu] = 3) THEN [typ_cennika]+[Kat3] "
+                        + "WHEN ([nr_progu] = 4) THEN [typ_cennika]+[Kat4] "
+                        + "WHEN ([nr_progu] = 5) THEN [typ_cennika]+[Kat5] "
+                        + "WHEN ([nr_progu] = 6) THEN [typ_cennika]+[Kat6] "
+                        + "WHEN ([nr_progu] = 7) THEN [typ_cennika]+[Kat7] "
+                        + "WHEN ([nr_progu] = 8) THEN [typ_cennika]+[Kat8] "
+                        + "WHEN ([nr_progu] = 9) THEN [typ_cennika]+[Kat9] "
+                        + "WHEN ([nr_progu] = 10) THEN [typ_cennika]+[Kat10] "
+                        + "WHEN ([nr_progu] = 11) THEN [typ_cennika]+[Kat11] "
+                        + "WHEN ([nr_progu] = 12) THEN [typ_cennika]+[Kat12] "
+                        + "WHEN ([nr_progu] = 13) THEN [typ_cennika]+[Kat13] "
+                        + "WHEN ([nr_progu] = 14) THEN [typ_cennika]+[Kat14] "
+                        + "END AS [Kat] "
+
                     + "from " + dataCennika;
 
                 SqlCommand command = new SqlCommand(query, conn);
@@ -54,6 +72,7 @@ namespace BusinessLayer
                     priceModel.okres_7_14 = dataReader.GetString(6);
                     priceModel.Service = dataReader.GetString(7);
                     priceModel.Cena = dataReader.GetInt32(8);
+                    priceModel.Kat = dataReader.GetString(9);
 
                     modelList.Add(priceModel);
                 }
@@ -87,7 +106,25 @@ namespace BusinessLayer
                         + "WHEN ([nr_progu] = 12) THEN [Cena12] "
                         + "WHEN ([nr_progu] = 13) THEN [Cena13] "
                         + "WHEN ([nr_progu] = 14) THEN [Cena14] "
-                        + "END AS [Cena]"
+                        + "END AS [Cena], "
+
+                    + "CASE "
+                        + "WHEN ([nr_progu] = 1) THEN [typ_cennika]+[Kat1] "
+                        + "WHEN ([nr_progu] = 2) THEN [typ_cennika]+[Kat2] "
+                        + "WHEN ([nr_progu] = 3) THEN [typ_cennika]+[Kat3] "
+                        + "WHEN ([nr_progu] = 4) THEN [typ_cennika]+[Kat4] "
+                        + "WHEN ([nr_progu] = 5) THEN [typ_cennika]+[Kat5] "
+                        + "WHEN ([nr_progu] = 6) THEN [typ_cennika]+[Kat6] "
+                        + "WHEN ([nr_progu] = 7) THEN [typ_cennika]+[Kat7] "
+                        + "WHEN ([nr_progu] = 8) THEN [typ_cennika]+[Kat8] "
+                        + "WHEN ([nr_progu] = 9) THEN [typ_cennika]+[Kat9] "
+                        + "WHEN ([nr_progu] = 10) THEN [typ_cennika]+[Kat10] "
+                        + "WHEN ([nr_progu] = 11) THEN [typ_cennika]+[Kat11] "
+                        + "WHEN ([nr_progu] = 12) THEN [typ_cennika]+[Kat12] "
+                        + "WHEN ([nr_progu] = 13) THEN [typ_cennika]+[Kat13] "
+                        + "WHEN ([nr_progu] = 14) THEN [typ_cennika]+[Kat14] "
+                        + "END AS [Kat] "
+
                     + "from " + dataCennika + " where [Object Code] = @searchKodHotel"
                     + ((searchRolaOsoby != "") ? " and [Rola_osoby] = @searchRolaOsoby" : " ")
                     + (!(searchDataCennika.Equals("") || searchDataCennika == null) ? " and [From booking date] = @searchDataCennika" : " ")
@@ -123,6 +160,7 @@ namespace BusinessLayer
                     priceModel.okres_7_14 = dataReader.GetString(6);
                     priceModel.Service = dataReader.GetString(7);
                     priceModel.Cena = dataReader.GetInt32(8);
+                    priceModel.Kat = dataReader.GetString(9);
 
                     modelList.Add(priceModel);
                 }

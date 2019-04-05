@@ -9,10 +9,10 @@ namespace BusinessLayer
 {
     public class PriceModel
     {
-        [Required]
+        [Required(ErrorMessage ="you need me")]
         public DateTime FromBookingDate { get; set; }
 
-        [Required]
+        [Required()]
         public string ObjectCode { get; set; }
 
         public DateTime FromDate { get; set; }
@@ -37,6 +37,7 @@ namespace BusinessLayer
         public int Cena12 { get; set; }
         public int Cena13 { get; set; }
         public int Cena14 { get; set; }
+        public string Kat { get; set; }
         public string Kat0 { get; set; }
         public string Kat1 { get; set; }
         public string Kat2 { get; set; }

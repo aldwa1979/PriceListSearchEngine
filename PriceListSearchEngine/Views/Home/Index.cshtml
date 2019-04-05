@@ -165,6 +165,9 @@
                 <th>
                     Cena
                 </th>
+                <th>
+                    Cennik
+                </th>
             </tr>
         </thead>
         @foreach (var item in Model)
@@ -181,7 +184,7 @@
                         @Html.DisplayFor(model => item.RoomCode)
                     </td>
                     <td>
-                        @Html.DisplayFor(model => item.FromDate).ToString().Substring(0,10)
+                        @Html.DisplayFor(model => item.FromDate).ToString().Substring(0, 10)
                     </td>
                     <td>
                         @if (item.Departure != null)
@@ -214,6 +217,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(model => item.Cena)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Kat)
                     </td>
                 </tr>
             </tbody>
